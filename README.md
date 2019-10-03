@@ -1,4 +1,8 @@
 # CRST
-[Coming soon] Pytorch code for ["Confidence Regularized Self-Training"](https://arxiv.org/abs/1908.09822) in ICCV19 (Oral)
+[Pytorch code coming soon]
+
+Confidence Regularized Self-Training in ICCV19 (Oral)
+
+[Paper](https://arxiv.org/abs/1908.09822) 
 
 [Slides](https://yzou2.github.io/pdf/CRST_slides.pdf)
