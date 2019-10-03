@@ -1,5 +1,4 @@
-# CRST
-Confidence Regularized Self-Training in ICCV19 (Oral)
+# Confidence Regularized Self-Training in ICCV19 (Oral)
 
 [Paper](https://arxiv.org/abs/1908.09822) 
 
