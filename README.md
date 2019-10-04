@@ -17,7 +17,7 @@ By Yang Zou*, Zhiding Yu*, Xiaofeng Liu, Vijayakumar Bhagavatula, Jinsong Wang (
 0. [Note](#note)
 
 ### Introduction
-This repository contains the regularized self-training based methods described in the ICCV 2019 paper ["Confidence Regularized Self-training"](https://arxiv.org/abs/1908.09822). Based on [Class-Balanced Self-Training (CBST)](https://arxiv.org/pdf/1810.07911.pdf), Confidence Regularized Self-Training is implemented.
+This repository contains the regularized self-training based methods described in the ICCV 2019 paper ["Confidence Regularized Self-training"](https://arxiv.org/abs/1908.09822). Both Class-Balanced Self-Training (CBST) and Confidence Regularized Self-Training (CRST) are implemented. 
 
 ### Requirements:
 The code is tested in Ubuntu 16.04 in a single 12GB NVIDIA TiTan Xp. It is implemented based on [Pytorch 0.4.0](https://pytorch.org/) with CUDA 9.0, OpenCV 3.2.0 and Python 2.7.12.
@@ -39,35 +39,26 @@ The model and code are available for non-commercial (NC) research purposes only.
 
 	Case|mIoU|Road|Sidewalk|Build|Wall|Fence|Pole|Traffic Light|Traffic Sign|Veg.|Terrain|Sky|Person|Rider|Car|Truck|Bus|Train|Motor|Bike
 	---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
-	Source|35.4|70.0|23.7|67.8|15.4|18.1|40.2|41.9|25.3|78.8|11.7|31.4|62.9|29.8|60.1|21.5|26.8|7.7|28.1|12.0
-	CBST|41.5|88.0|20.4|80.4|25.5|19.7|41.3|42.6|20.2|86.0|3.5|64.6|65.4|25.4|83.3|31.7|44.3|0.6|13.4|3.7
-	CRST-KLD|45.2|86.8|46.7|76.9|26.3|24.8|42.0|46.0|38.6|80.7|15.7|48.0|57.3|27.9|78.2|24.5|49.6|17.7|25.5|45.1
-	CBST-LRENT|46.2|88.0|56.2|77.0|27.4|22.4|40.7|47.3|40.9|82.4|21.6|60.3|50.2|20.4|83.8|35.0|51.0|15.2|20.6|37.0
+	Source|33.8|71.3|19.2|69.1|18.4|10.0|35.7|27.3|6.8|79.6|24.8|72.1|57.6|19.5|55.5|15.5|15.1|11.7|21.1|12.0
+	CBST|45.9|91.8|53.5|80.5|32.7|21.0|34.0|28.9|20.4|83.9|34.2|80.9|53.1|24.0|82.7|30.3|35.9|16.0|25.9|42.8
+	CRST-KLD|47.3|91.8|55.2|80.4|32.8|20.3|35.0|33.6|25.9|84.4|33.8|81.2|55.8|24.4|83.5|28.5|32.4|26.6|27.3|44.9
+	CBST-LRENT|45.9|91.8|53.5|80.5|32.7|21.0|34.0|29.0|20.3|83.9|34.2|80.9|53.1|23.9|82.7|30.2|35.6|16.3|25.9|42.8
 
 
 ### Setup
-We assume you are working in cbst-master folder.
+We assume you are working in CRST-master folder.
 
 0. Datasets:
-- Download [GTA-5](https://download.visinf.tu-darmstadt.de/data/from_games/) dataset. Since GTA-5 contains images with different resolutions, we recommend resize all images to 1052x1914. 
+- Download [GTA5](https://download.visinf.tu-darmstadt.de/data/from_games/) dataset. Since GTA-5 contains images with different resolutions, we recommend resize all images to 1052x1914. 
 - Download [Cityscapes](https://www.cityscapes-dataset.com/).
-- Download [SYNTHIA-RAND-CITYSCAPES](http://synthia-dataset.net/download/808/).
 - Put downloaded data in "data" folder.
 1. Source pretrained models:
-- Download [source model](https://www.dropbox.com/s/idnnk398hf6u3x9/gta_rna-a1_cls19_s8_ep-0000.params?dl=0) trained in GTA-5.
-- Download [source model](https://www.dropbox.com/s/l6oxhxhovn2l38p/synthia_rna-a1_cls16_s8_ep-0000.params?dl=0) trained in SYNTHIA.
+- Download [source model](https://www.dropbox.com/s/idnnk398hf6u3x9/gta_rna-a1_cls19_s8_ep-0000.params?dl=0) trained in GTA5.
 - For ImageNet pre-traine model, download [model in dropbox](https://www.dropbox.com/s/n2eewzy7bn7lhk0/ilsvrc-cls_rna-a1_cls1000_ep-0001.params?dl=0), provided by [official ResNet-38 repository](https://github.com/itijyou/ademxapp).
 - Put source trained and ImageNet pre-trained models in "models/" folder
-2. Spatial priors 
-- Download [Spatial priors](https://www.dropbox.com/s/o6xac8r3z30huxs/prior_array.mat?dl=0) from GTA-5. Spatial priors are only used in GTA2Cityscapes. Put the prior_array.mat in "spatial_prior/gta/" folder.
 
 ### Usage
-0. Set the PYTHONPATH environment variable:
-~~~~
-cd cbst-master
-export PYTHONPATH=PYTHONPATH:./
-~~~~
-1. Self-training for GTA2Cityscapes:
+0. Self-training for GTA2Cityscapes:
 - CBST:
 ~~~~
 python issegm/solve_AO.py --num-round 6 --test-scales 1850 --scale-rate-range 0.7,1.3 --dataset gta --dataset-tgt cityscapes --split train --split-tgt train --data-root DATA_ROOT_GTA5 --data-root-tgt DATA_ROOT_CITYSCAPES --output gta2city/cbst-sp --model cityscapes_rna-a1_cls19_s8 --weights models/gta_rna-a1_cls19_s8_ep-0000.params --batch-images 2 --crop-size 500 --origin-size-tgt 2048 --init-tgt-port 0.15 --init-src-port 0.03 --seed-int 0 --mine-port 0.8 --mine-id-number 3 --mine-thresh 0.001 --base-lr 1e-4 --to-epoch 2 --source-sample-policy cumulative --self-training-script issegm/solve_ST.py --kc-policy cb --prefetch-threads 2 --gpus 0 --with-prior True
@@ -102,10 +93,9 @@ python issegm/evaluate.py --data-root DATA_ROOT_GTA --output val/gta --dataset g
 ~~~~
 python issegm/train_src.py --gpus 0,1,2,3 --split train --data-root DATA_ROOT_GTA --output gta_train --model gta_rna-a1_cls19_s8 --batch-images 16 --crop-size 500 --scale-rate-range 0.7,1.3 --weights models/ilsvrc-cls_rna-a1_cls1000_ep-0001.params --lr-type fixed --base-lr 0.0016 --to-epoch 30 --kvstore local --prefetch-threads 16 --prefetcher process --cache-images 0 --backward-do-mirror --origin-size 1914
 ~~~~
-- Train in Cityscapes, please check the [official ResNet-38 repository](https://github.com/itijyou/ademxapp).
+- Train in Cityscapes, please check the [original DeepLab-ResNet-Pytorch repository](https://github.com/speedinghzl/Pytorch-Deeplab).
 
 ### Note
-- This code is based on [ResNet-38](https://github.com/itijyou/ademxapp).
-- Due to the randomness, the self-training results may slightly vary in each run. Usually the best results will be obtained in 2nd/3rd round. For training in source domain, the best model usually appears during the first 30 epoches. Optimal model appearing in initial stage is also possible.
+- This code is based on [DeepLab-ResNet-Pytorch](https://github.com/speedinghzl/Pytorch-Deeplab).
 
 Contact: yzou2@andrew.cmu.edu
