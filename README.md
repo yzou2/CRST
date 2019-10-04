@@ -5,9 +5,7 @@ By Yang Zou*, Zhiding Yu*, Xiaofeng Liu, Vijayakumar Bhagavatula, Jinsong Wang (
 [[Paper]](https://arxiv.org/abs/1908.09822) [[Slides]](https://yzou2.github.io/pdf/CRST_slides.pdf)
 
 ### Update
-- **2018.09.11**: check out our new paper ["Confidence Regularized Self-Training"](https://arxiv.org/pdf/1908.09822.pdf) (ICCV 2019, Oral), which investigates confidence regularization in self-training systematically. The [pytorch code](https://github.com/yzou2/CRST) based on CBST will be released soon.
-- **2018.11.11**: source domain training code for GTA-5 and SYNTHIA uploaded
-- **2018.10.14**: code release for GTA-5 to Cityscapes and SYNTHIA to Cityscapes
+- **2019.10.04**: code release for GTA-5 to Cityscapes
 
 ### Contents
 0. [Introduction](#introduction)
@@ -19,20 +17,19 @@ By Yang Zou*, Zhiding Yu*, Xiaofeng Liu, Vijayakumar Bhagavatula, Jinsong Wang (
 0. [Note](#note)
 
 ### Introduction
-This repository contains the self-training based methods described in the ECCV 2018 paper ["Domain Adaptation for Semantic Segmentation via Class-Balanced Self-Training"](https://arxiv.org/pdf/1810.07911.pdf). Self-training (ST), Class-balanced self-training (CBST) with Spatial Priors (CBST-SP) are implemented. CBST is the core algorithm for the 1st and 3rd winner of [Domain Adaptation of Semantic Segmentation Challenge in CVPR 2018 Workshop on Autonomous Driving (WAD)](http://wad.ai/challenge.html).
+This repository contains the regularized self-training based methods described in the ICCV 2019 paper ["Confidence Regularized Self-training"]https://arxiv.org/abs/1908.09822). Based on [Class-Balanced Self-Training (CBST)](https://github.com/yzou2/CBST), Confidence Regularized Self-Training is implemented.
 
 ### Requirements:
-The code is tested in Ubuntu 16.04. It is implemented based on [MXNet 1.3.0](https://mxnet.apache.org/install/index.html?platform=Linux&language=Python&processor=GPU) and Python 2.7.12. For GPU usage, the maximum GPU memory consumption is about 7GB in a single NVIDIA TiTan Xp.
+The code is tested in Ubuntu 16.04 in a single 12GB NVIDIA TiTan Xp. It is implemented based on [Pytorch 0.4.0](https://pytorch.org/) with CUDA 9.0, OpenCV 3.2.0 and Python 2.7.12.
 
 ### Citation
 If you use this code, please cite:
 
 	@inproceedings{zou2018unsupervised,
-	  title={Unsupervised Domain Adaptation for Semantic Segmentation via Class-Balanced Self-Training},
-	  author={Zou, Yang and Yu, Zhiding and Kumar, BVK Vijaya and Wang, Jinsong},
-	  booktitle={Proceedings of the European Conference on Computer Vision (ECCV)},
-	  pages={289--305},
-	  year={2018}
+	  title={Confidence Regularized Self-Training},
+	  author={Zou, Yang and Yu, Zhiding and Liu Xiaofeng and Kumar, BVK Vijaya and Wang, Jinsong},
+	  booktitle={Proceedings of the IEEE International Conference on Computer Vision},
+	  year={2019}
 	}
 
 The model and code are available for non-commercial (NC) research purposes only. If you modify the code and want to redistribute, please include the CC-BY-NC-SA-4.0 license.
@@ -43,17 +40,9 @@ The model and code are available for non-commercial (NC) research purposes only.
 	Case|mIoU|Road|Sidewalk|Build|Wall|Fence|Pole|Traffic Light|Traffic Sign|Veg.|Terrain|Sky|Person|Rider|Car|Truck|Bus|Train|Motor|Bike
 	---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
 	Source|35.4|70.0|23.7|67.8|15.4|18.1|40.2|41.9|25.3|78.8|11.7|31.4|62.9|29.8|60.1|21.5|26.8|7.7|28.1|12.0
-	ST|41.5|88.0|20.4|80.4|25.5|19.7|41.3|42.6|20.2|86.0|3.5|64.6|65.4|25.4|83.3|31.7|44.3|0.6|13.4|3.7
-	CBST|45.2|86.8|46.7|76.9|26.3|24.8|42.0|46.0|38.6|80.7|15.7|48.0|57.3|27.9|78.2|24.5|49.6|17.7|25.5|45.1
-	CBST-SP|46.2|88.0|56.2|77.0|27.4|22.4|40.7|47.3|40.9|82.4|21.6|60.3|50.2|20.4|83.8|35.0|51.0|15.2|20.6|37.0
-
-0. SYNTHIA2City:
-
-	Case|mIoU|Road|Sidewalk|Build|Wall|Fence|Pole|Traffic Light|Traffic Sign|Veg.|Sky|Person|Rider|Car|Bus|Motor|Bike
-	---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
-	Source|29.2|32.6|21.5|46.5|4.8|0.1|26.5|14.8|13.1|70.8|60.3|56.6|3.5|74.1|20.4|8.9|13.1
-	ST|32.2|38.2|19.6|70.2|3.9|0.0|31.9|17.6|17.2|82.4|68.3|63.1|5.3|78.4|11.2|0.8|7.5
-	CBST|42.5|53.6|23.7|75.0|12.5|0.3|36.4|23.5|26.3|84.8|74.7|67.2|17.5|84.5|28.4|15.2|55.8
+	CBST|41.5|88.0|20.4|80.4|25.5|19.7|41.3|42.6|20.2|86.0|3.5|64.6|65.4|25.4|83.3|31.7|44.3|0.6|13.4|3.7
+	CRST-KLD|45.2|86.8|46.7|76.9|26.3|24.8|42.0|46.0|38.6|80.7|15.7|48.0|57.3|27.9|78.2|24.5|49.6|17.7|25.5|45.1
+	CBST-LRENT|46.2|88.0|56.2|77.0|27.4|22.4|40.7|47.3|40.9|82.4|21.6|60.3|50.2|20.4|83.8|35.0|51.0|15.2|20.6|37.0
 
 
 ### Setup
