@@ -1,10 +1,9 @@
 # Confidence Regularized Self-Training (ICCV19, Oral) 
 
-[Paper](https://arxiv.org/abs/1908.09822)
-
-[Slides](https://yzou2.github.io/pdf/CRST_slides.pdf)
-
 By Yang Zou*, Zhiding Yu*, Xiaofeng Liu, Vijayakumar Bhagavatula, Jinsong Wang (* indicates equal contribution).
+
+[Paper](https://arxiv.org/abs/1908.09822)     
+[Slides](https://yzou2.github.io/pdf/CRST_slides.pdf)
 
 ### Update
 - **2018.09.11**: check out our new paper ["Confidence Regularized Self-Training"](https://arxiv.org/pdf/1908.09822.pdf) (ICCV 2019, Oral), which investigates confidence regularization in self-training systematically. The [pytorch code](https://github.com/yzou2/CRST) based on CBST will be released soon.
