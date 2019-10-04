@@ -17,7 +17,7 @@ By Yang Zou*, Zhiding Yu*, Xiaofeng Liu, Vijayakumar Bhagavatula, Jinsong Wang (
 0. [Note](#note)
 
 ### Introduction
-This repository contains the regularized self-training based methods described in the ICCV 2019 paper ["Confidence Regularized Self-training"](https://arxiv.org/abs/1908.09822). Based on [Class-Balanced Self-Training (CBST)](https://github.com/yzou2/CBST), Confidence Regularized Self-Training is implemented.
+This repository contains the regularized self-training based methods described in the ICCV 2019 paper ["Confidence Regularized Self-training"](https://arxiv.org/abs/1908.09822). Based on [Class-Balanced Self-Training (CBST)](https://arxiv.org/pdf/1810.07911.pdf), Confidence Regularized Self-Training is implemented.
 
 ### Requirements:
 The code is tested in Ubuntu 16.04 in a single 12GB NVIDIA TiTan Xp. It is implemented based on [Pytorch 0.4.0](https://pytorch.org/) with CUDA 9.0, OpenCV 3.2.0 and Python 2.7.12.
