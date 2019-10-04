@@ -17,7 +17,7 @@ By Yang Zou*, Zhiding Yu*, Xiaofeng Liu, Vijayakumar Bhagavatula, Jinsong Wang (
 0. [Note](#note)
 
 ### Introduction
-This repository contains the regularized self-training based methods described in the ICCV 2019 paper ["Confidence Regularized Self-training"]https://arxiv.org/abs/1908.09822). Based on [Class-Balanced Self-Training (CBST)](https://github.com/yzou2/CBST), Confidence Regularized Self-Training is implemented.
+This repository contains the regularized self-training based methods described in the ICCV 2019 paper ["Confidence Regularized Self-training"](https://arxiv.org/abs/1908.09822). Based on [Class-Balanced Self-Training (CBST)](https://github.com/yzou2/CBST), Confidence Regularized Self-Training is implemented.
 
 ### Requirements:
 The code is tested in Ubuntu 16.04 in a single 12GB NVIDIA TiTan Xp. It is implemented based on [Pytorch 0.4.0](https://pytorch.org/) with CUDA 9.0, OpenCV 3.2.0 and Python 2.7.12.
@@ -68,14 +68,18 @@ cd cbst-master
 export PYTHONPATH=PYTHONPATH:./
 ~~~~
 1. Self-training for GTA2Cityscapes:
-- CBST-SP:
+- CBST:
 ~~~~
 python issegm/solve_AO.py --num-round 6 --test-scales 1850 --scale-rate-range 0.7,1.3 --dataset gta --dataset-tgt cityscapes --split train --split-tgt train --data-root DATA_ROOT_GTA5 --data-root-tgt DATA_ROOT_CITYSCAPES --output gta2city/cbst-sp --model cityscapes_rna-a1_cls19_s8 --weights models/gta_rna-a1_cls19_s8_ep-0000.params --batch-images 2 --crop-size 500 --origin-size-tgt 2048 --init-tgt-port 0.15 --init-src-port 0.03 --seed-int 0 --mine-port 0.8 --mine-id-number 3 --mine-thresh 0.001 --base-lr 1e-4 --to-epoch 2 --source-sample-policy cumulative --self-training-script issegm/solve_ST.py --kc-policy cb --prefetch-threads 2 --gpus 0 --with-prior True
 ~~~~
-2. Self-training for SYNTHIA2City:
-- CBST:
+- CRST-MRKLD:
 ~~~~
-python issegm/solve_AO.py --num-round 6 --test-scales 1850 --scale-rate-range 0.7,1.3 --dataset synthia --dataset-tgt cityscapes --split train --split-tgt train --data-root DATA_ROOT_SYNTHIA --data-root-tgt DATA_ROOT_CITYSCAPES --output syn2city/cbst --model cityscapes_rna-a1_cls16_s8 --weights models/synthia_rna-a1_cls16_s8_ep-0000.params --batch-images 2 --crop-size 500 --origin-size 1280 --origin-size-tgt 2048 --init-tgt-port 0.2 --init-src-port 0.02 --max-src-port 0.06 --seed-int 0 --mine-port 0.8 --mine-id-number 3 --mine-thresh 0.001 --base-lr 1e-4 --to-epoch 2 --source-sample-policy cumulative --self-training-script issegm/solve_ST.py --kc-policy cb --prefetch-threads 2 --gpus 0 --with-prior False
+python issegm/solve_AO.py --num-round 6 --test-scales 1850 --scale-rate-range 0.7,1.3 --dataset gta --dataset-tgt cityscapes --split train --split-tgt train --data-root DATA_ROOT_GTA5 --data-root-tgt DATA_ROOT_CITYSCAPES --output gta2city/cbst-sp --model cityscapes_rna-a1_cls19_s8 --weights models/gta_rna-a1_cls19_s8_ep-0000.params --batch-images 2 --crop-size 500 --origin-size-tgt 2048 --init-tgt-port 0.15 --init-src-port 0.03 --seed-int 0 --mine-port 0.8 --mine-id-number 3 --mine-thresh 0.001 --base-lr 1e-4 --to-epoch 2 --source-sample-policy cumulative --self-training-script issegm/solve_ST.py --kc-policy cb --prefetch-threads 2 --gpus 0 --with-prior True
+~~~~
+- CRST-LREND:
+~~~~
+python issegm/solve_AO.py --num-round 6 --test-scales 1850 --scale-rate-range 0.7,1.3 --dataset gta --dataset-tgt cityscapes --split train --split-tgt train --data-root DATA_ROOT_GTA5 --data-root-tgt DATA_ROOT_CITYSCAPES --output gta2city/cbst-sp --model cityscapes_rna-a1_cls19_s8 --weights models/gta_rna-a1_cls19_s8_ep-0000.params --batch-images 2 --crop-size 500 --origin-size-tgt 2048 --init-tgt-port 0.15 --init-src-port 0.03 --seed-int 0 --mine-port 0.8 --mine-id-number 3 --mine-thresh 0.001 --base-lr 1e-4 --to-epoch 2 --source-sample-policy cumulative --self-training-script issegm/solve_ST.py --kc-policy cb --prefetch-threads 2 --gpus 0 --with-prior True
+~~~~
 ~~~~
 3. 
 - To run the code, you need to set the data paths of source data (data-root) and target data (data-root-tgt) by yourself. Besides that, you can keep other argument setting as default.
@@ -94,18 +98,11 @@ python issegm/evaluate.py --data-root DATA_ROOT_CITYSCAPES --output val/syn-city
 ~~~~
 python issegm/evaluate.py --data-root DATA_ROOT_GTA --output val/gta --dataset gta --phase val --weights models/gta_rna-a1_cls19_s8_ep-0000.params --split train --test-scales 1914 --test-flipping --gpus 0 --no-cudnn
 ~~~~
-- Test in SYNTHIA
-~~~~
-python issegm/evaluate.py --data-root DATA_ROOT_SYNTHIA --output val/synthia --dataset synthia --phase val --weights models/synthia_rna-a1_cls16_s8_ep-0000.params --split train --test-scales 1280 --test-flipping --gpus 0 --no-cudnn
-~~~~
 5. Train in source domain
 - Train in GTA-5
 ~~~~
 python issegm/train_src.py --gpus 0,1,2,3 --split train --data-root DATA_ROOT_GTA --output gta_train --model gta_rna-a1_cls19_s8 --batch-images 16 --crop-size 500 --scale-rate-range 0.7,1.3 --weights models/ilsvrc-cls_rna-a1_cls1000_ep-0001.params --lr-type fixed --base-lr 0.0016 --to-epoch 30 --kvstore local --prefetch-threads 16 --prefetcher process --cache-images 0 --backward-do-mirror --origin-size 1914
 ~~~~
-- Train in SYNTHIA
-~~~~
-python issegm/train_src.py --gpus 0,1,2,3 --split train --data-root DATA_ROOT_SYNTHIA --output synthia_train --model synthia_rna-a1_cls16_s8 --batch-images 16 --crop-size 500 --scale-rate-range 0.7,1.3 --weights models/ilsvrc-cls_rna-a1_cls1000_ep-0001.params --lr-type fixed --base-lr 0.0016 --to-epoch 50 --kvstore local --prefetch-threads 16 --prefetcher process --cache-images 0 --backward-do-mirror --origin-size 1280
 ~~~~
 - Train in Cityscapes, please check the [official ResNet-38 repository](https://github.com/itijyou/ademxapp).
 
