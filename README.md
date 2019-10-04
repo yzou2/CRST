@@ -1,4 +1,6 @@
-# Confidence Regularized Self-Training (ICCV19, Oral) [Paper](https://arxiv.org/abs/1908.09822)  [Slides](https://yzou2.github.io/pdf/CRST_slides.pdf)
+# Confidence Regularized Self-Training (ICCV19, Oral) 
+
+[Paper](https://arxiv.org/abs/1908.09822)  [Slides](https://yzou2.github.io/pdf/CRST_slides.pdf)
 
 By Yang Zou*, Zhiding Yu*, Xiaofeng Liu, Vijayakumar Bhagavatula, Jinsong Wang (* indicates equal contribution).
 
