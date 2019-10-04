@@ -27,7 +27,7 @@ If you use this code, please cite:
 
 	@inproceedings{zou2018unsupervised,
 	  title={Confidence Regularized Self-Training},
-	  author={Zou, Yang and Yu, Zhiding and Liu Xiaofeng and Kumar, BVK Vijaya and Wang, Jinsong},
+	  author={Zou, Yang and Yu, Zhiding, Liu Xiaofeng, Kumar, BVK Vijaya and Wang, Jinsong},
 	  booktitle={Proceedings of the IEEE International Conference on Computer Vision},
 	  year={2019}
 	}
