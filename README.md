@@ -5,7 +5,7 @@ By Yang Zou*, Zhiding Yu*, Xiaofeng Liu, Vijayakumar Bhagavatula, Jinsong Wang (
 [[Paper]](https://arxiv.org/abs/1908.09822) [[Slides]](https://yzou2.github.io/pdf/CRST_slides.pdf)
 
 ### Update
-- **2019.10.04**: code release for GTA-5 to Cityscapes
+#- **2019.10.04**: code release for GTA-5 to Cityscapes
 
 ### Contents
 0. [Introduction](#introduction)
