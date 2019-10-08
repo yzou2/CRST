@@ -20,7 +20,7 @@ By Yang Zou*, Zhiding Yu*, Xiaofeng Liu, Vijayakumar Bhagavatula, Jinsong Wang (
 This repository contains the regularized self-training based methods described in the ICCV 2019 paper ["Confidence Regularized Self-training"](https://arxiv.org/abs/1908.09822). Both Class-Balanced Self-Training (CBST) and Confidence Regularized Self-Training (CRST) are implemented. 
 
 ### Requirements:
-The code is implemented based on [Pytorch 0.4.0](https://pytorch.org/) with CUDA 9.0, OpenCV 3.2.0 and Python 2.7.12. It is tested in Ubuntu 16.04 with a single 12GB NVIDIA TiTan Xp. Maximum GPU usage is 12GB.
+The code is implemented based on [Pytorch 0.4.0](https://pytorch.org/) with CUDA 9.0, OpenCV 3.2.0 and Python 2.7.12. It is tested in Ubuntu 16.04 with a single 12GB NVIDIA TiTan Xp. Maximum GPU usage is about 11GB.
 
 ### Citation
 If you use this code, please cite:
