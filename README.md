@@ -53,9 +53,8 @@ We assume you are working in CRST-master folder.
 - Download [Cityscapes](https://www.cityscapes-dataset.com/).
 - Put downloaded data in "data" folder.
 1. Source pretrained models:
-- Download [source model]() trained in GTA5.
-- For ImageNet pre-traine model, download [model in dropbox]().
-- Put source trained and ImageNet pre-trained models in "models/" folder
+- Download [source model](https://www.dropbox.com/s/q6dzd3n0b55jjo7/gta_src.pth?dl=0) trained in GTA5.
+- Put source trained models in "models/" folder
 
 ### Usage
 0. Self-training for GTA2Cityscapes:
