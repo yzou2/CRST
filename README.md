@@ -54,8 +54,6 @@ We assume you are working in CRST-master folder.
 - Put downloaded data in "dataset" folder.
 1. Source pretrained models:
 - Download [source model](https://www.dropbox.com/s/q6dzd3n0b55jjo7/gta_src.pth?dl=0) trained in GTA5.
-2. Spatial priors:
-- Download [spatial priors](https://www.dropbox.com/s/lruq5h6ko5t30ub/prior_array.mat?dl=0) from GTA-5. Spatial priors are only used in GTA2Cityscapes. Put the prior_array.mat in "dataset/spatial_prior/gta/" folder.
 
 ### Usage
 0. Self-training for GTA2Cityscapes:
