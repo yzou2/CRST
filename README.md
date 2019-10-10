@@ -49,15 +49,14 @@ The code is implemented based on [Pytorch 0.4.0](https://pytorch.org/) with CUDA
 We assume you are working in CRST-master folder.
 
 0. Datasets:
-- Download [GTA5](https://download.visinf.tu-darmstadt.de/data/from_games/) dataset. Since GTA-5 contains images with different resolutions, we recommend resize all images to 1052x1914. 
+- Download [GTA5](https://download.visinf.tu-darmstadt.de/data/from_games/) dataset. Since GTA-5 contains images with different resolutions, we need to resize all images to 1052x1914. 
 - Download [Cityscapes](https://www.cityscapes-dataset.com/).
 - Put downloaded data in "dataset" folder.
 1. Source pretrained models:
 - Download [source model](https://www.dropbox.com/s/q6dzd3n0b55jjo7/gta_src.pth?dl=0) trained in GTA5 and put it into "src_model/gta5" folder.
 
 ### Usage
-0. 
-- To run the self-training, you need to set the data paths of source data (data-src-dir) and target data (data-tgt-dir) by yourself. Besides that, you can keep other argument setting as default.
+0. To run the self-training, you need to set the data paths of source data (data-src-dir) and target data (data-tgt-dir) by yourself. Besides that, you can keep other argument setting as default.
 
 1. Play with self-training for GTA2Cityscapes.
 - CBST:
