@@ -29,6 +29,14 @@ If you use this code, please cite:
 	  booktitle={Proceedings of the IEEE International Conference on Computer Vision},
 	  year={2019}
 	}
+	
+	@inproceedings{zou2018unsupervised,
+	  title={Unsupervised Domain Adaptation for Semantic Segmentation via Class-Balanced Self-Training},
+	  author={Zou, Yang and Yu, Zhiding and Kumar, BVK Vijaya and Wang, Jinsong},
+	  booktitle={Proceedings of the European Conference on Computer Vision (ECCV)},
+	  pages={289--305},
+	  year={2018}
+	}
 
 The model and code are available for non-commercial (NC) research purposes only. If you modify the code and want to redistribute, please include the CC-BY-NC-SA-4.0 license.
 
