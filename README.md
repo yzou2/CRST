@@ -12,18 +12,15 @@ By Yang Zou*, Zhiding Yu*, Xiaofeng Liu, Vijayakumar Bhagavatula, Jinsong Wang (
 0. [Introduction](#introduction)
 0. [Citation and license](#citation)
 0. [Requirements](#requirements)
+0. [Results](#results)
 0. [Setup](#models)
 0. [Usage](#usage)
-0. [Results](#results)
 0. [Note](#note)
 
 ### Introduction
 This repository contains the regularized self-training based methods described in the ICCV 2019 paper ["Confidence Regularized Self-training"](https://arxiv.org/abs/1908.09822). Both Class-Balanced Self-Training (CBST) and Confidence Regularized Self-Training (CRST) are implemented. 
 
-### Requirements:
-The code is implemented based on [Pytorch 0.4.0](https://pytorch.org/) with CUDA 9.0, OpenCV 3.2.0 and Python 2.7.12. It is tested in Ubuntu 16.04 with a single 12GB NVIDIA TiTan Xp. Maximum GPU usage is about 11GB.
-
-### Citation
+### Citation and license
 If you use this code, please cite:
 
 	@inproceedings{zou2018unsupervised,
@@ -34,6 +31,9 @@ If you use this code, please cite:
 	}
 
 The model and code are available for non-commercial (NC) research purposes only. If you modify the code and want to redistribute, please include the CC-BY-NC-SA-4.0 license.
+
+### Requirements:
+The code is implemented based on [Pytorch 0.4.0](https://pytorch.org/) with CUDA 9.0, OpenCV 3.2.0 and Python 2.7.12. It is tested in Ubuntu 16.04 with a single 12GB NVIDIA TiTan Xp. Maximum GPU usage is about 11GB.
 
 ### Results:
 0. GTA2city:
