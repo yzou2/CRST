@@ -58,8 +58,8 @@ We assume you are working in CRST-master folder.
 ### Usage
 0. 
 - To run the self-training, you need to set the data paths of source data (data-src-dir) and target data (data-tgt-dir) by yourself. Besides that, you can keep other argument setting as default.
-Self-training for GTA2Cityscapes:
-1. Play with self-training.
+
+1. Play with self-training for GTA2Cityscapes.
 - CBST:
 ~~~~
 sh cbst.sh
@@ -73,7 +73,7 @@ sh mrkld.sh
 sh lrent.sh
 ~~~~
 2. 
-- For CBST, set "--kc-policy cb --kc-value conf".
+- For CBST, set "--kc-policy cb --kc-value conf". You can keep them as default.
 - We use a small class patch mining strategy to mine the patches including small classes. To turn off small class mining, set "--mine-chance 0.0".
 3. Evaluation
 - Test in Cityscapes for model compatible with GTA-5 (Initial source trained model as example). Remember to set the data folder (--data-dir).
