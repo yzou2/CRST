@@ -53,13 +53,13 @@ We assume you are working in CRST-master folder.
 - Download [Cityscapes](https://www.cityscapes-dataset.com/).
 - Put downloaded data in "dataset" folder.
 1. Source pretrained models:
-- Download [source model](https://www.dropbox.com/s/q6dzd3n0b55jjo7/gta_src.pth?dl=0) trained in GTA5.
+- Download [source model](https://www.dropbox.com/s/q6dzd3n0b55jjo7/gta_src.pth?dl=0) trained in GTA5 and put it into "src_model" folder.
 
 ### Usage
 0. 
 - To run the self-training, you need to set the data paths of source data (data-src-dir) and target data (data-tgt-dir) by yourself. Besides that, you can keep other argument setting as default.
 Self-training for GTA2Cityscapes:
-1. Playing with self-training.
+1. Play with self-training.
 - CBST:
 ~~~~
 sh cbst.sh
