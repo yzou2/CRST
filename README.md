@@ -6,6 +6,7 @@ By Yang Zou*, Zhiding Yu*, Xiaofeng Liu, Vijayakumar Bhagavatula, Jinsong Wang (
 
 ### Update
 
+**2019-10-10: CBST/CRST code for semantic segmentation released**
 
 ### Contents
 0. [Introduction](#introduction)
