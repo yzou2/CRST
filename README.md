@@ -73,6 +73,7 @@ sh lrent.sh
 ~~~~
 2. 
 - For CBST, set "--kc-policy cb --kc-value conf". You can keep them as default.
+- Multi-scale testing are implemented in both self-training code and evaluation code. Set MST with "--test-scale".
 - We use a small class patch mining strategy to mine the patches including small classes. To turn off small class mining, set "--mine-chance 0.0".
 3. Evaluation
 - Test in Cityscapes for model compatible with GTA-5 (Initial source trained model as example). Remember to set the data folder (--data-dir).
