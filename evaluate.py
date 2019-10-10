@@ -28,7 +28,7 @@ DATA_LIST_PATH = './dataset/list/cityscapes/val.lst'
 SAVE_PATH = './cityscapes/eval'
 
 TEST_IMAGE_SIZE = '1024,2048'
-TEST_SCALES = 1.0
+TEST_SCALE = 1.0
 IGNORE_LABEL = 255
 NUM_CLASSES = 19
 NUM_STEPS = 500 # Number of images in the validation set.
@@ -73,7 +73,7 @@ def get_arguments():
                         help="The name of log file.")
     parser.add_argument('--debug',help='True means logging debug info.',
                         default=False, action='store_true')
-    parser.add_argument('--test-scales', type=str, default=TEST_SCALES,
+    parser.add_argument('--test-scale', type=str, default=TEST_SCALE,
                         help='The test scales. Multi-scale supported')
     parser.add_argument('--test-image-size', default=TEST_IMAGE_SIZE,
                         help='The test image size',
@@ -163,7 +163,7 @@ def main():
     testloader = data.DataLoader(GTA5TestDataSet(args.data_dir, args.data_list, test_scale = 1.0, test_size=(1024, 512), mean=IMG_MEAN, std=IMG_STD, scale=False, mirror=False),
                                     batch_size=1, shuffle=False, pin_memory=True)
 
-    test_scales = [float(_) for _ in str(args.test_scales).split(',')]
+    test_scales = [float(_) for _ in str(args.test_scale).split(',')]
 
     h, w = map(int, args.test_image_size.split(','))
     if version.parse(torch.__version__) >= version.parse('0.4.0'):
