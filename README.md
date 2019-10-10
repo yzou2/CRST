@@ -81,7 +81,7 @@ sh lrent.sh
 sh evaluate.sh
 ~~~~
 
-5. Train in source domain. Also remember to set the data folder (--data-dir).
+4. Train in source domain. Also remember to set the data folder (--data-dir).
 - Train in GTA-5
 ~~~~
 sh train.sh
