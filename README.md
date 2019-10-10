@@ -74,13 +74,13 @@ sh lrent.sh
 2. 
 - For CBST, set "--kc-policy cb --kc-value conf".
 - We use a small class patch mining strategy to mine the patches including small classes. To turn off small class mining, set "--mine-chance 0.0".
-4. Evaluation
-- Test in Cityscapes for model compatible with GTA-5 (Initial source trained model as example)
+3. Evaluation
+- Test in Cityscapes for model compatible with GTA-5 (Initial source trained model as example). Remember to set the data folder (--data-dir).
 ~~~~
 sh evaluate.sh
 ~~~~
 
-5. Train in source domain
+5. Train in source domain. Also remember to set the data folder (--data-dir).
 - Train in GTA-5
 ~~~~
 sh train.sh
