@@ -40,9 +40,9 @@ The model and code are available for non-commercial (NC) research purposes only.
 	Case|mIoU|Road|Sidewalk|Build|Wall|Fence|Pole|Traffic Light|Traffic Sign|Veg.|Terrain|Sky|Person|Rider|Car|Truck|Bus|Train|Motor|Bike
 	---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
 	Source|33.35|71.71|18.53|68.02|17.37|10.15|36.63|27.63|6.27|78.66|21.80|67.69|58.28|20.72|59.26|16.43|12.45|7.93|21.21|12.96
-CBST|46.47|89.91|53.84|79.73|30.29|19.21|40.23|32.28|22.26|84.11|29.96|75.52|61.93|28.54|82.57|25.89|33.76|19.29|33.62|40.00
-CBST-LRENT|46.51|89.98|53.86|79.81|30.27|19.15|40.30|32.22|22.24|84.09|29.81|75.45|62.09|28.66|82.76|26.02|33.61|19.42|33.69|40.34
-CRST-MRKLD|47.39|91.30|55.64|80.04|30.22|18.85|39.27|35.96|27.09|84.52|31.81|74.55|62.59|27.90|82.43|23.81|31.10|25.36|32.60|45.43
+	CBST|46.47|89.91|53.84|79.73|30.29|19.21|40.23|32.28|22.26|84.11|29.96|75.52|61.93|28.54|82.57|25.89|33.76|19.29|33.62|40.00
+	CRST-LRENT|46.51|89.98|53.86|79.81|30.27|19.15|40.30|32.22|22.24|84.09|29.81|75.45|62.09|28.66|82.76|26.02|33.61|19.42|33.69|40.34
+	CRST-MRKLD|47.39|91.30|55.64|80.04|30.22|18.85|39.27|35.96|27.09|84.52|31.81|74.55|62.59|27.90|82.43|23.81|31.10|25.36|32.60|45.43
 
 ### Setup
 We assume you are working in CRST-master folder.
@@ -58,37 +58,30 @@ We assume you are working in CRST-master folder.
 0. Self-training for GTA2Cityscapes:
 - CBST:
 ~~~~
-
+sh cbst.sh
 ~~~~
 - CRST-MRKLD:
 ~~~~
-
+sh mrkld.sh
 ~~~~
 - CRST-LREND:
 ~~~~
-
+sh lrent.sh
 ~~~~
 3. 
-- To run the code, you need to set the data paths of source data (data-root) and target data (data-root-tgt) by yourself. Besides that, you can keep other argument setting as default.
+- To run the code, you need to set the data paths of source data (data-src-dir) and target data (data-tgt-dir) by yourself. Besides that, you can keep other argument setting as default.
 - For CBST, set "--kc-policy cb" and "--with-prior False". For ST, set "--kc-policy global" and "--with-prior False".
 - We use a small class patch mining strategy to mine the patches including small classes. To turn off small class mining, set "--mine-port 0.0".
 4. Evaluation
 - Test in Cityscapes for model compatible with GTA-5 (Initial source trained model as example)
 ~~~~
-
+sh evaluate.sh
 ~~~~
-- Test in Cityscapes for model compatible with SYNTHIA (Initial source trained model as example)
-~~~~
-
-~~~~
-- Test in GTA-5
-~~~~
-
 ~~~~
 5. Train in source domain
 - Train in GTA-5
 ~~~~
-
+sh train.sh
 ~~~~
 - Train in Cityscapes, please check the [original DeepLab-ResNet-Pytorch repository](https://github.com/speedinghzl/Pytorch-Deeplab).
 
