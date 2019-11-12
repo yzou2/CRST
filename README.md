@@ -24,11 +24,11 @@ This repository contains the regularized self-training based methods described i
 If you use this code, please cite:
 
 	@InProceedings{Zou_2019_ICCV,
-	  author = {Zou, Yang and Yu, Zhiding and Liu, Xiaofeng and Kumar, B.V.K. Vijaya and Wang, Jinsong},
-	  title = {Confidence Regularized Self-Training},
-	  booktitle = {The IEEE International Conference on Computer Vision (ICCV)},
-	  month = {October},
-	  year = {2019}
+	author = {Zou, Yang and Yu, Zhiding and Liu, Xiaofeng and Kumar, B.V.K. Vijaya and Wang, Jinsong},
+	title = {Confidence Regularized Self-Training},
+	booktitle = {The IEEE International Conference on Computer Vision (ICCV)},
+	month = {October},
+	year = {2019}
 	}
 	
 	@inproceedings{zou2018unsupervised,
