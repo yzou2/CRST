@@ -99,6 +99,6 @@ sh train.sh
 
 ### Note
 - This code is based on [DeepLab-ResNet-Pytorch](https://github.com/speedinghzl/Pytorch-Deeplab).
-- The code is tested in Pytorch 0.4.0 and Python 2.7. We found running the code with other Pytorch versions will give different results.
+- The code is tested in Pytorch 0.4.0 and Python 2.7. We found running the code with other Pytorch versions will give different results. I suggest to run the code with the exact Pytorch version 0.4.0. Different performances on even 0.4.1 were reported by other users of this code.
 
 Contact: yzou2@andrew.cmu.edu
