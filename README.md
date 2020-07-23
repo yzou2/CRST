@@ -103,6 +103,6 @@ sh train.sh
 
 ### Related Works
 
-https://github.com/layumi/Seg-Uncertainty
+- https://github.com/layumi/Seg-Uncertainty
 
 Contact: yzou2@andrew.cmu.edu
